@@ -15,12 +15,11 @@
 
   <!-- Custom fonts for this template -->
   <link href="http://wptutorial.local/wp-content/themes/myblog/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
   <!-- Custom styles for this template -->
   <link href="http://wptutorial.local/wp-content/themes/myblog/css/clean-blog.min.css" rel="stylesheet">
-
   <?php wp_head(); ?>
 </head>
 
@@ -54,53 +53,34 @@
   </nav>
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+  <header class="masthead" style="background-image: url('img/post-bg.jpg')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="site-heading">
-            <h1>Clean Blog  <?php echo date('Y') ?></h1>
-            <span class="subheading">A Blog Theme by Start Bootstrap</span>
+          <div class="post-heading">
+            <h1><?php the_title() ?></h1>
+            <h2 class="subheading"><?php the_excerpt() ?></h2>
+            <span class="meta">Posted by
+            <a href="#"><?php the_author() ?></a>
+            on <?php echo get_the_date(); ?></span>
           </div>
         </div>
       </div>
     </div>
   </header>
 
- 
-  <!-- Main Content -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-      <hr>
-        <?php if(have_posts()): ?>
-          <?php while(have_posts()):the_post(); ?>
-          <div class="post-preview">
-          <a href="<?php the_permalink() ?>">
-            <h2 class="post-title">
-                 <?php the_title(); ?>
-                </h2>
-                <h3 class="post-subtitle">
-                  <?php the_excerpt() ?>
-                </h3>
-              </a>
-              <p class="post-meta">Posted by
-                <a href="#"><?php the_author() ?></a>
-                on <?php echo get_the_date(); ?></p>
-              </div>
-              <hr>
-              <!-- Pager -->
-              <?php endwhile; ?>
-        <div class="clearfix">
-          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+         <?php the_content() ?>
         </div>
-          <?php else: ?>
-            <p>No articel founded</p>
-          <?php endif; ?>
-        </div>
+      </div>
     </div>
-  </div>
+  </article>
+
   <hr>
 
   <!-- Footer -->
