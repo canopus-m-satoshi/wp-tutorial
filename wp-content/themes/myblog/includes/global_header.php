@@ -25,8 +25,11 @@
     </div>
   </nav>
 
+
+
+  <?php if(!is_single()): ?>
 <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/home-bg.jpg')">
+<header class="masthead" style="background-image: url('img/home-bg.jpg')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -39,3 +42,23 @@
       </div>
     </div>
   </header>
+    
+ <?php else: ?>
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/post-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1><?php the_title(); ?></h1>
+            <h2 class="subheading"><?php the_excerpt() ?></h2>
+            <span class="meta">Posted by
+            <?php the_author(); ?>
+            on <?php echo get_the_date(); ?></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+<?php endif ?>
