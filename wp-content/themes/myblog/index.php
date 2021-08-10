@@ -22,7 +22,7 @@
                  <?php the_title(); ?>
                 </h2>
                 <h3 class="post-subtitle">
-                  <?php the_excerpt() ?>
+                  <?php the_content() ?>
                 </h3>
               </a>
               <p class="post-meta">Posted by

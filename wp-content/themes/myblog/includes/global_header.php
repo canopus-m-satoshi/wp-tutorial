@@ -30,33 +30,12 @@
 
 
 
-  <?php if(!is_single()): ?>
-<!-- Page Header -->
-<header class="masthead" style="background-image: url('img/home-bg.jpg')">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="site-heading">
-            <h1>Clean Blog  <?php echo date('Y') ?></h1>
-            <span class="subheading">A Blog Theme by Start Bootstrap</span>
-          </div>
-        </div>
-      </div>
-    </div>
-</header>
-    
- <?php else: ?>
+  <?php if(is_single()): ?>
   <!-- Page Header -->
   <?php 
-  if(has_post_thumbnail()):
-  $id = get_post_thumbnail_id();
-  $img = wp_get_attachment_image_src($id,'large');
-  else :
-    $img = array(get_template_directory_uri() . '/img/post-bg.jpg');
-  endif;
+$eyecatch =get_eyecatch_with_default();
   ?>
-  <header class="masthead" style="background-image: url('<?php echo $img[0]; ?>')">
+  <header class="masthead" style="background-image: url('<?php echo $eyecatch[0]; ?>')">
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
@@ -72,4 +51,38 @@
       </div>
     </div>
   </header>
+    
+ <?php elseif(is_page()): ?>
+    <!-- Page Header -->
+    <?php 
+$eyecatch =get_eyecatch_with_default();
+  ?>
+    <header class="masthead" style="background-image: url('<?php echo $eyecatch[0]; ?>')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+          <h1><?php the_title(); ?></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+</header>
+ <?php else: ?>
+
+  <!-- Page Header -->
+<header class="masthead" style="background-image: url('img/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Clean Blog  <?php echo date('Y') ?></h1>
+            <span class="subheading">A Blog Theme by Start Bootstrap</span>
+          </div>
+        </div>
+      </div>
+    </div>
+</header>
 <?php endif ?>
